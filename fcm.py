@@ -16,14 +16,11 @@ def get_access_token():
         scopes=SCOPES
     )
     credentials.refresh(Request())
-    return credentials.token
+    return credentials.token, service_account_info["project_id"]
 
 
 def send_fcm_notification(token, title, body, data=None):
-    access_token = get_access_token()
-
-    with open("serviceAccountKey.json") as f:
-        project_id = json.load(f)["project_id"]
+    access_token, project_id = get_access_token()
 
     url = f"https://fcm.googleapis.com/v1/projects/{project_id}/messages:send"
 
