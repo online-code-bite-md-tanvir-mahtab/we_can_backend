@@ -2,12 +2,17 @@ import json
 import requests
 from google.oauth2 import service_account
 from google.auth.transport.requests import Request
+import os
 
 SCOPES = ["https://www.googleapis.com/auth/firebase.messaging"]
 
 def get_access_token():
+    # this will load the data from the environment variable
+    service_account_info = json.loads(
+        os.environ["FIREBASE_SERVICE_ACCOUNT"]
+    )
     credentials = service_account.Credentials.from_service_account_file(
-        "serviceAccountKey.json",
+        service_account_info,
         scopes=SCOPES
     )
     credentials.refresh(Request())
