@@ -9,7 +9,7 @@ SCOPES = ["https://www.googleapis.com/auth/firebase.messaging"]
 def get_access_token():
     # this will load the data from the environment variable
     service_account_info = json.loads(
-        os.environ["FIREBASE_SERVICE_ACCOUNT"]
+        os.environ["GOOGLE_SERVICE_ACCOUNT_JSON"]
     )
     credentials = service_account.Credentials.from_service_account_file(
         service_account_info,
