@@ -11,7 +11,7 @@ def get_access_token():
     service_account_info = json.loads(
         os.environ["GOOGLE_SERVICE_ACCOUNT_JSON"]
     )
-    credentials = service_account.Credentials.from_service_account_file(
+    credentials = service_account.Credentials.from_service_account_info(
         service_account_info,
         scopes=SCOPES
     )
