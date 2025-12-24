@@ -50,6 +50,10 @@ app = Flask(__name__)
 
 #     return jsonify(res)
 
+@app.route("/")
+def home():
+    return "Emergency Notification Service is running."
+
 @app.route("/test", methods=["POST"])
 def test_notification():
     data = request.json
